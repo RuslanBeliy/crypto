@@ -3,7 +3,7 @@ const priceSell = document.getElementById('price-sell');
 const priceBuy = document.getElementById('price-buy');
 const result = document.querySelector('.result');
 
-quantity.value = +localStorage.getItem('quantity') || 1;
+quantity.value = localStorage.getItem('quantity') ? +localStorage.getItem('quantity') : 1;
 
 let res = 0;
 
@@ -13,8 +13,8 @@ const setResult = () => {
 
 quantity.addEventListener('input', (e) => {
   const count = +e.target.value;
-  const priceS = +priceSell.value;
-  const priceB = +priceBuy.value;
+  const priceS = priceSell.value ? +priceSell.value : 1;
+  const priceB = priceBuy.value ? +priceBuy.value : 1;
 
   res = (count * priceS) / priceB;
   localStorage.setItem('quantity', res);
@@ -38,3 +38,4 @@ priceBuy.addEventListener('input', (e) => {
   res = (count * priceS) / priceB;
   setResult();
 });
+
