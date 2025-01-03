@@ -13,11 +13,8 @@ const setResult = () => {
 
 quantity.addEventListener('input', (e) => {
   const count = +e.target.value;
-  const priceS = priceSell.value ? +priceSell.value : 1;
-  const priceB = priceBuy.value ? +priceBuy.value : 1;
 
-  res = (count * priceS) / priceB;
-  localStorage.setItem('quantity', res);
+  localStorage.setItem('quantity', count);
   setResult();
 });
 
